@@ -29,57 +29,65 @@
         private void InitializeComponent()
         {
             this.FormHeader = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.MinimizeButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.GetButton = new System.Windows.Forms.Button();
-            this.PostButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.ItemButton = new System.Windows.Forms.Button();
+            this.EmployeeButton = new System.Windows.Forms.Button();
+            this.StoreButton = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.SubmitButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.EmployeeListBox = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ItemListBox = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.StoreListBox = new System.Windows.Forms.ListBox();
+            this.ManagerListBox = new System.Windows.Forms.ListBox();
+            this.EventNameTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.StaffMemberLabel = new System.Windows.Forms.Label();
+            this.StoresLabel = new System.Windows.Forms.Label();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.ELabel = new System.Windows.Forms.Label();
             this.FormHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // FormHeader
             // 
             this.FormHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.FormHeader.Controls.Add(this.button1);
+            this.FormHeader.Controls.Add(this.MinimizeButton);
             this.FormHeader.Controls.Add(this.label1);
-            this.FormHeader.Controls.Add(this.button2);
+            this.FormHeader.Controls.Add(this.CloseButton);
             this.FormHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.FormHeader.Location = new System.Drawing.Point(0, 0);
             this.FormHeader.Name = "FormHeader";
             this.FormHeader.Size = new System.Drawing.Size(800, 50);
             this.FormHeader.TabIndex = 81;
+            this.FormHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormHeader_MouseDown);
+            this.FormHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormHeader_MouseMove);
+            this.FormHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormHeader_MouseUp);
             // 
-            // button1
+            // MinimizeButton
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Marlett", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Location = new System.Drawing.Point(701, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 42);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "_";
-            this.button1.UseVisualStyleBackColor = true;
+            this.MinimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MinimizeButton.FlatAppearance.BorderSize = 0;
+            this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MinimizeButton.Font = new System.Drawing.Font("Marlett", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimizeButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.MinimizeButton.Location = new System.Drawing.Point(701, 3);
+            this.MinimizeButton.Name = "MinimizeButton";
+            this.MinimizeButton.Size = new System.Drawing.Size(45, 42);
+            this.MinimizeButton.TabIndex = 4;
+            this.MinimizeButton.Text = "_";
+            this.MinimizeButton.UseVisualStyleBackColor = true;
+            this.MinimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
             // 
             // label1
             // 
@@ -91,134 +99,79 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Test Form For ODBC Connection";
             // 
-            // button2
+            // CloseButton
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Yu Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.Location = new System.Drawing.Point(752, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(45, 42);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
+            this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Yu Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CloseButton.Location = new System.Drawing.Point(752, 3);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(45, 42);
+            this.CloseButton.TabIndex = 3;
+            this.CloseButton.Text = "X";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(321, 56);
+            this.label8.Location = new System.Drawing.Point(335, 97);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 84;
             this.label8.Text = "Stores:";
             // 
-            // panel4
+            // ItemButton
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panel4.Location = new System.Drawing.Point(304, 62);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(134, 376);
-            this.panel4.TabIndex = 85;
+            this.ItemButton.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ItemButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ItemButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemButton.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold);
+            this.ItemButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ItemButton.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ItemButton.Location = new System.Drawing.Point(2, 139);
+            this.ItemButton.Name = "ItemButton";
+            this.ItemButton.Size = new System.Drawing.Size(160, 45);
+            this.ItemButton.TabIndex = 82;
+            this.ItemButton.Text = "Item";
+            this.ItemButton.UseVisualStyleBackColor = false;
+            this.ItemButton.Click += new System.EventHandler(this.ItemButton_Click);
             // 
-            // button3
+            // EmployeeButton
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button3.Location = new System.Drawing.Point(2, 139);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 45);
-            this.button3.TabIndex = 82;
-            this.button3.Text = "Item";
-            this.button3.UseVisualStyleBackColor = false;
+            this.EmployeeButton.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.EmployeeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EmployeeButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.EmployeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EmployeeButton.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold);
+            this.EmployeeButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.EmployeeButton.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.EmployeeButton.Location = new System.Drawing.Point(2, 95);
+            this.EmployeeButton.Name = "EmployeeButton";
+            this.EmployeeButton.Size = new System.Drawing.Size(160, 45);
+            this.EmployeeButton.TabIndex = 75;
+            this.EmployeeButton.Text = "Employee";
+            this.EmployeeButton.UseVisualStyleBackColor = false;
+            this.EmployeeButton.Click += new System.EventHandler(this.EmployeeButton_Click);
             // 
-            // GetButton
+            // StoreButton
             // 
-            this.GetButton.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.GetButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GetButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.GetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GetButton.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold);
-            this.GetButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.GetButton.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.GetButton.Location = new System.Drawing.Point(2, 95);
-            this.GetButton.Name = "GetButton";
-            this.GetButton.Size = new System.Drawing.Size(160, 45);
-            this.GetButton.TabIndex = 75;
-            this.GetButton.Text = "Employee";
-            this.GetButton.UseVisualStyleBackColor = false;
-            // 
-            // PostButton
-            // 
-            this.PostButton.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.PostButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PostButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PostButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PostButton.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PostButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.PostButton.Location = new System.Drawing.Point(2, 53);
-            this.PostButton.Name = "PostButton";
-            this.PostButton.Size = new System.Drawing.Size(160, 45);
-            this.PostButton.TabIndex = 74;
-            this.PostButton.Text = "Store";
-            this.PostButton.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(457, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 86;
-            this.label2.Text = "Managers:";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panel1.Location = new System.Drawing.Point(444, 62);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(134, 70);
-            this.panel1.TabIndex = 87;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(459, 133);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 88;
-            this.label3.Text = "Staff:";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panel2.Location = new System.Drawing.Point(444, 139);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(134, 299);
-            this.panel2.TabIndex = 89;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(596, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 90;
-            this.label4.Text = "Items:";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panel3.Location = new System.Drawing.Point(584, 62);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(134, 376);
-            this.panel3.TabIndex = 91;
+            this.StoreButton.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.StoreButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.StoreButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.StoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StoreButton.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StoreButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StoreButton.Location = new System.Drawing.Point(2, 53);
+            this.StoreButton.Name = "StoreButton";
+            this.StoreButton.Size = new System.Drawing.Size(160, 45);
+            this.StoreButton.TabIndex = 74;
+            this.StoreButton.Text = "Store";
+            this.StoreButton.UseVisualStyleBackColor = false;
+            this.StoreButton.Click += new System.EventHandler(this.StoreButton_Click);
             // 
             // button6
             // 
@@ -285,80 +238,188 @@
             this.button10.Text = "--";
             this.button10.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // SubmitButton
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(728, 393);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(60, 45);
-            this.button4.TabIndex = 97;
-            this.button4.Text = "Submit";
-            this.button4.UseVisualStyleBackColor = false;
+            this.SubmitButton.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.SubmitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SubmitButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubmitButton.Location = new System.Drawing.Point(645, 360);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(134, 67);
+            this.SubmitButton.TabIndex = 97;
+            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.UseVisualStyleBackColor = false;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
-            // button5
+            // label3
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(2, 402);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(160, 45);
-            this.button5.TabIndex = 98;
-            this.button5.Text = "--";
-            this.button5.UseVisualStyleBackColor = false;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(178, 146);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.TabIndex = 101;
+            this.label3.Text = "Managers:";
+            // 
+            // EmployeeListBox
+            // 
+            this.EmployeeListBox.FormattingEnabled = true;
+            this.EmployeeListBox.Location = new System.Drawing.Point(645, 111);
+            this.EmployeeListBox.Name = "EmployeeListBox";
+            this.EmployeeListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.EmployeeListBox.Size = new System.Drawing.Size(134, 238);
+            this.EmployeeListBox.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(642, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 103;
+            this.label2.Text = "Employee\'s:";
+            // 
+            // ItemListBox
+            // 
+            this.ItemListBox.FormattingEnabled = true;
+            this.ItemListBox.Location = new System.Drawing.Point(496, 111);
+            this.ItemListBox.Name = "ItemListBox";
+            this.ItemListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.ItemListBox.Size = new System.Drawing.Size(134, 316);
+            this.ItemListBox.TabIndex = 104;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(493, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 105;
+            this.label4.Text = "Items:";
+            // 
+            // StoreListBox
+            // 
+            this.StoreListBox.FormattingEnabled = true;
+            this.StoreListBox.Location = new System.Drawing.Point(338, 111);
+            this.StoreListBox.Name = "StoreListBox";
+            this.StoreListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.StoreListBox.Size = new System.Drawing.Size(146, 316);
+            this.StoreListBox.TabIndex = 106;
+            // 
+            // ManagerListBox
+            // 
+            this.ManagerListBox.FormattingEnabled = true;
+            this.ManagerListBox.Location = new System.Drawing.Point(181, 163);
+            this.ManagerListBox.Name = "ManagerListBox";
+            this.ManagerListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.ManagerListBox.Size = new System.Drawing.Size(146, 264);
+            this.ManagerListBox.TabIndex = 107;
+            // 
+            // EventNameTextBox
+            // 
+            this.EventNameTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.EventNameTextBox.Location = new System.Drawing.Point(181, 63);
+            this.EventNameTextBox.Name = "EventNameTextBox";
+            this.EventNameTextBox.ReadOnly = true;
+            this.EventNameTextBox.Size = new System.Drawing.Size(598, 20);
+            this.EventNameTextBox.TabIndex = 108;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(168, 62);
+            this.label5.Location = new System.Drawing.Point(178, 95);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 99;
-            this.label5.Text = "Event Name:";
+            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.TabIndex = 109;
+            this.label5.Text = "Staff Members:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(168, 75);
+            this.label6.Location = new System.Drawing.Point(178, 122);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 100;
-            this.label6.Text = "NoData";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 110;
+            this.label6.Text = "Stores:";
+            // 
+            // StaffMemberLabel
+            // 
+            this.StaffMemberLabel.AutoSize = true;
+            this.StaffMemberLabel.Location = new System.Drawing.Point(262, 95);
+            this.StaffMemberLabel.Name = "StaffMemberLabel";
+            this.StaffMemberLabel.Size = new System.Drawing.Size(44, 13);
+            this.StaffMemberLabel.TabIndex = 111;
+            this.StaffMemberLabel.Text = "NoData";
+            // 
+            // StoresLabel
+            // 
+            this.StoresLabel.AutoSize = true;
+            this.StoresLabel.Location = new System.Drawing.Point(224, 122);
+            this.StoresLabel.Name = "StoresLabel";
+            this.StoresLabel.Size = new System.Drawing.Size(44, 13);
+            this.StoresLabel.TabIndex = 112;
+            this.StoresLabel.Text = "NoData";
+            // 
+            // BackButton
+            // 
+            this.BackButton.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.BackButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackButton.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold);
+            this.BackButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackButton.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.BackButton.Location = new System.Drawing.Point(2, 403);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(160, 45);
+            this.BackButton.TabIndex = 113;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
+            // ELabel
+            // 
+            this.ELabel.AutoSize = true;
+            this.ELabel.ForeColor = System.Drawing.Color.Red;
+            this.ELabel.Location = new System.Drawing.Point(180, 431);
+            this.ELabel.Name = "ELabel";
+            this.ELabel.Size = new System.Drawing.Size(0, 13);
+            this.ELabel.TabIndex = 136;
             // 
             // EventInitializer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ELabel);
+            this.Controls.Add(this.BackButton);
+            this.Controls.Add(this.StoresLabel);
+            this.Controls.Add(this.StaffMemberLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.EventNameTextBox);
+            this.Controls.Add(this.ManagerListBox);
+            this.Controls.Add(this.StoreListBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.ItemListBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.EmployeeListBox);
+            this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button9);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.FormHeader);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.GetButton);
-            this.Controls.Add(this.PostButton);
+            this.Controls.Add(this.ItemButton);
+            this.Controls.Add(this.EmployeeButton);
+            this.Controls.Add(this.StoreButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EventInitializer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EventInitializer";
-            this.Load += new System.EventHandler(this.EventInitializer_Load);
             this.FormHeader.ResumeLayout(false);
             this.FormHeader.PerformLayout();
             this.ResumeLayout(false);
@@ -369,28 +430,32 @@
         #endregion
 
         private System.Windows.Forms.Panel FormHeader;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button GetButton;
-        private System.Windows.Forms.Button PostButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button ItemButton;
+        private System.Windows.Forms.Button EmployeeButton;
+        private System.Windows.Forms.Button StoreButton;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button SubmitButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox EmployeeListBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox ItemListBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox StoreListBox;
+        private System.Windows.Forms.ListBox ManagerListBox;
+        private System.Windows.Forms.TextBox EventNameTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label StaffMemberLabel;
+        private System.Windows.Forms.Label StoresLabel;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Label ELabel;
     }
 }

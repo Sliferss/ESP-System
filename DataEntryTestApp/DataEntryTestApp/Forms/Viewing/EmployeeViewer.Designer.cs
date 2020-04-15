@@ -41,19 +41,17 @@
             this.EmployeeViewerButton = new System.Windows.Forms.Button();
             this.StoreViewerButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.StaffNameLabel = new System.Windows.Forms.Label();
+            this.SalaryLabel = new System.Windows.Forms.Label();
+            this.StoreLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.BackButton = new System.Windows.Forms.Button();
+            this.StaffListBox = new System.Windows.Forms.ListBox();
             this.FormHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -240,98 +238,79 @@
             this.label8.TabIndex = 72;
             this.label8.Text = "Staff:";
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panel4.Location = new System.Drawing.Point(168, 62);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(134, 376);
-            this.panel4.TabIndex = 73;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.panel1.Controls.Add(this.StaffNameLabel);
+            this.panel1.Controls.Add(this.SalaryLabel);
+            this.panel1.Controls.Add(this.StoreLabel);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Location = new System.Drawing.Point(415, 149);
+            this.panel1.Location = new System.Drawing.Point(415, 159);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(237, 191);
+            this.panel1.Size = new System.Drawing.Size(237, 123);
             this.panel1.TabIndex = 74;
+            // 
+            // StaffNameLabel
+            // 
+            this.StaffNameLabel.AutoSize = true;
+            this.StaffNameLabel.Location = new System.Drawing.Point(61, 24);
+            this.StaffNameLabel.Name = "StaffNameLabel";
+            this.StaffNameLabel.Size = new System.Drawing.Size(47, 13);
+            this.StaffNameLabel.TabIndex = 16;
+            this.StaffNameLabel.Text = "No Data";
+            // 
+            // SalaryLabel
+            // 
+            this.SalaryLabel.AutoSize = true;
+            this.SalaryLabel.Location = new System.Drawing.Point(61, 55);
+            this.SalaryLabel.Name = "SalaryLabel";
+            this.SalaryLabel.Size = new System.Drawing.Size(47, 13);
+            this.SalaryLabel.TabIndex = 15;
+            this.SalaryLabel.Text = "No Data";
+            // 
+            // StoreLabel
+            // 
+            this.StoreLabel.AutoSize = true;
+            this.StoreLabel.Location = new System.Drawing.Point(61, 88);
+            this.StoreLabel.Name = "StoreLabel";
+            this.StoreLabel.Size = new System.Drawing.Size(47, 13);
+            this.StoreLabel.TabIndex = 14;
+            this.StoreLabel.Text = "No Data";
+            this.StoreLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.StoreLabel_MouseClick);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 138);
+            this.label6.Location = new System.Drawing.Point(20, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "Store:";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(83, 135);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 20);
-            this.textBox4.TabIndex = 6;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 106);
+            this.label5.Location = new System.Drawing.Point(20, 55);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Salary:";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(83, 103);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 20);
-            this.textBox3.TabIndex = 4;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 73);
+            this.label4.Location = new System.Drawing.Point(20, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Name:";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(83, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 20);
-            this.textBox2.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Staff ID:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(83, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 20);
-            this.textBox1.TabIndex = 0;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(430, 143);
+            this.label2.Location = new System.Drawing.Point(435, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 75;
@@ -354,16 +333,25 @@
             this.BackButton.UseVisualStyleBackColor = false;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // StaffListBox
+            // 
+            this.StaffListBox.FormattingEnabled = true;
+            this.StaffListBox.Location = new System.Drawing.Point(188, 72);
+            this.StaffListBox.Name = "StaffListBox";
+            this.StaffListBox.Size = new System.Drawing.Size(166, 355);
+            this.StaffListBox.TabIndex = 77;
+            this.StaffListBox.SelectedIndexChanged += new System.EventHandler(this.StaffListBox_SelectedIndexChanged);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.StaffListBox);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.FormHeader);
             this.Controls.Add(this.ManagerViewerButton);
             this.Controls.Add(this.ItemViewerButton);
@@ -375,7 +363,7 @@
             this.Controls.Add(this.StoreViewerButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormHeader.ResumeLayout(false);
             this.FormHeader.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -400,18 +388,16 @@
         private System.Windows.Forms.Button EmployeeViewerButton;
         private System.Windows.Forms.Button StoreViewerButton;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.ListBox StaffListBox;
+        private System.Windows.Forms.Label StoreLabel;
+        private System.Windows.Forms.Label StaffNameLabel;
+        private System.Windows.Forms.Label SalaryLabel;
     }
 }

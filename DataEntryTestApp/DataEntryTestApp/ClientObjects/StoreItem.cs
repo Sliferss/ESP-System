@@ -17,6 +17,7 @@ namespace DataEntryTestApp
         {
             item = _item;
             stock = _stock;
+            sold = 0;
         }
 
         //full Data Constructor

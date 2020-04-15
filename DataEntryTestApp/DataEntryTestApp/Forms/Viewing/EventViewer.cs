@@ -54,7 +54,7 @@ namespace DataEntryTestApp
             EmployeeCountTextBox.Text = storedEvent.staffMembers.Count.ToString();
             SoldItemTextBox.Text = SoldItemCount().ToString();
             StoreCountTextBox.Text = storedEvent.stores.Count.ToString();
-            ProductCostTextBox.Text = InitialInvestmentCalc().ToString();
+            ProductCostTextBox.Text = FormatNumber(InitialInvestmentCalc());
             UniqueItemCountTextBox.Text = storedEvent.eventItems.Count.ToString();
             ProffitLabel.Text = FormatNumber(storedEvent.GetEventProfit());
             FillStoreBarChart(SumStoreProfChart);
@@ -112,6 +112,9 @@ namespace DataEntryTestApp
         //generates the return pie chart
         public void FillProffitPieChart(Chart _targetChart)
         {
+            _targetChart.Series.Clear();
+            _targetChart.Series.Add("series1");
+            _targetChart.Series[0].ChartType = SeriesChartType.Pie;
             _targetChart.Series[0]["PieLabelStyle"] = "Disabled";
             _targetChart.Series[0].Points.AddXY("Investment", storedEvent.GetEventInvestment());
             _targetChart.Series[0].Points.AddXY("Profit", storedEvent.GetEventProfit());

@@ -50,5 +50,18 @@ namespace DataEntryTestApp
             }
             return cost;
         }
+
+        //checks if passed staff member is a normal member of staff, or a manager
+        public bool CheckIsManager(Staff _staffMember)
+        {
+            foreach(Store foo in stores)
+            {
+                if(foo.manager == _staffMember)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

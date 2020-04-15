@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.FormLabel = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
@@ -316,17 +316,17 @@
             // 
             this.SumStoreProfChart.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.SumStoreProfChart.BorderlineColor = System.Drawing.SystemColors.InactiveBorder;
-            chartArea13.Name = "ChartArea1";
-            this.SumStoreProfChart.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            this.SumStoreProfChart.Legends.Add(legend13);
+            chartArea3.Name = "ChartArea1";
+            this.SumStoreProfChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.SumStoreProfChart.Legends.Add(legend3);
             this.SumStoreProfChart.Location = new System.Drawing.Point(3, 3);
             this.SumStoreProfChart.Name = "SumStoreProfChart";
             this.SumStoreProfChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Series1";
-            this.SumStoreProfChart.Series.Add(series13);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.SumStoreProfChart.Series.Add(series3);
             this.SumStoreProfChart.Size = new System.Drawing.Size(313, 178);
             this.SumStoreProfChart.TabIndex = 0;
             this.SumStoreProfChart.Text = "chart1";
@@ -362,18 +362,18 @@
             // InvestmentCompareChart
             // 
             this.InvestmentCompareChart.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            chartArea14.Name = "ChartArea1";
-            this.InvestmentCompareChart.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            this.InvestmentCompareChart.Legends.Add(legend14);
+            chartArea4.Name = "ChartArea1";
+            this.InvestmentCompareChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.InvestmentCompareChart.Legends.Add(legend4);
             this.InvestmentCompareChart.Location = new System.Drawing.Point(3, 6);
             this.InvestmentCompareChart.Name = "InvestmentCompareChart";
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series14.Legend = "Legend1";
-            series14.Name = "Series1";
-            series14.YValuesPerPoint = 2;
-            this.InvestmentCompareChart.Series.Add(series14);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.YValuesPerPoint = 2;
+            this.InvestmentCompareChart.Series.Add(series4);
             this.InvestmentCompareChart.Size = new System.Drawing.Size(289, 147);
             this.InvestmentCompareChart.TabIndex = 0;
             this.InvestmentCompareChart.Text = "chart1";
