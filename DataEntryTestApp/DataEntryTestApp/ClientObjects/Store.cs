@@ -13,6 +13,14 @@ namespace DataEntryTestApp
         public List<Staff> staffOnDuty;
         public Staff manager;
 
+        //for the store initializer
+        public Store()
+        {
+            storeName = "";
+            inventory = new List<StoreItem>();
+            staffOnDuty = new List<Staff>();
+            manager = null;
+        }
         //copy constructor
         public Store(string _storeName, List<StoreItem> _inventory, List<Staff> _staffOnduty, Staff _manager)
         {

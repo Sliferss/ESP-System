@@ -28,21 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.ItemNameTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.StoresStockingTextBox = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.UnitsSoldTextBox = new System.Windows.Forms.Label();
+            this.ProffitPerUnitTextBox = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.SalePriceTextBox = new System.Windows.Forms.Label();
+            this.WholesalePriceTextBox = new System.Windows.Forms.Label();
             this.FormHeader = new System.Windows.Forms.Panel();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,40 +61,24 @@
             this.button8 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label10 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ItemProfitChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.ProfitLabel = new System.Windows.Forms.Label();
             this.ViewerBackButton = new System.Windows.Forms.Button();
+            this.EventItemListBox = new System.Windows.Forms.ListBox();
             this.panel2.SuspendLayout();
             this.FormHeader.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SalesChart)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemProfitChart)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(98, 140);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(114, 20);
-            this.textBox6.TabIndex = 10;
-            this.textBox6.Text = "No Data";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(185, 57);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 71;
-            this.label8.Text = "Items:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(71, 114);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(141, 20);
-            this.textBox5.TabIndex = 8;
-            this.textBox5.Text = "No Data";
             // 
             // label5
             // 
@@ -101,14 +89,6 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Units Sold:";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(88, 88);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(124, 20);
-            this.textBox4.TabIndex = 6;
-            this.textBox4.Text = "No Data";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -117,14 +97,6 @@
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Profit Per Unit:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(71, 59);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(141, 20);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "No Data";
             // 
             // label3
             // 
@@ -144,50 +116,44 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Wholesale Price:";
             // 
-            // textBox2
+            // ItemNameTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(115, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "No Data";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Item Name";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panel4.Location = new System.Drawing.Point(168, 63);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(134, 376);
-            this.panel4.TabIndex = 73;
+            this.ItemNameTextBox.Location = new System.Drawing.Point(4, 4);
+            this.ItemNameTextBox.Name = "ItemNameTextBox";
+            this.ItemNameTextBox.ReadOnly = true;
+            this.ItemNameTextBox.Size = new System.Drawing.Size(208, 20);
+            this.ItemNameTextBox.TabIndex = 0;
+            this.ItemNameTextBox.Text = "Item Name";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.StoresStockingTextBox);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.textBox6);
+            this.panel2.Controls.Add(this.UnitsSoldTextBox);
+            this.panel2.Controls.Add(this.ProffitPerUnitTextBox);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBox5);
+            this.panel2.Controls.Add(this.SalePriceTextBox);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.WholesalePriceTextBox);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.textBox3);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.ItemNameTextBox);
             this.panel2.Location = new System.Drawing.Point(308, 63);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(215, 180);
             this.panel2.TabIndex = 76;
+            // 
+            // StoresStockingTextBox
+            // 
+            this.StoresStockingTextBox.AutoSize = true;
+            this.StoresStockingTextBox.Location = new System.Drawing.Point(98, 143);
+            this.StoresStockingTextBox.Name = "StoresStockingTextBox";
+            this.StoresStockingTextBox.Size = new System.Drawing.Size(47, 13);
+            this.StoresStockingTextBox.TabIndex = 85;
+            this.StoresStockingTextBox.Text = "No Data";
             // 
             // label7
             // 
@@ -198,6 +164,24 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Stores Stocking:";
             // 
+            // UnitsSoldTextBox
+            // 
+            this.UnitsSoldTextBox.AutoSize = true;
+            this.UnitsSoldTextBox.Location = new System.Drawing.Point(71, 117);
+            this.UnitsSoldTextBox.Name = "UnitsSoldTextBox";
+            this.UnitsSoldTextBox.Size = new System.Drawing.Size(47, 13);
+            this.UnitsSoldTextBox.TabIndex = 84;
+            this.UnitsSoldTextBox.Text = "No Data";
+            // 
+            // ProffitPerUnitTextBox
+            // 
+            this.ProffitPerUnitTextBox.AutoSize = true;
+            this.ProffitPerUnitTextBox.Location = new System.Drawing.Point(88, 91);
+            this.ProffitPerUnitTextBox.Name = "ProffitPerUnitTextBox";
+            this.ProffitPerUnitTextBox.Size = new System.Drawing.Size(47, 13);
+            this.ProffitPerUnitTextBox.TabIndex = 83;
+            this.ProffitPerUnitTextBox.Text = "No Data";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -205,6 +189,24 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 9;
+            // 
+            // SalePriceTextBox
+            // 
+            this.SalePriceTextBox.AutoSize = true;
+            this.SalePriceTextBox.Location = new System.Drawing.Point(71, 62);
+            this.SalePriceTextBox.Name = "SalePriceTextBox";
+            this.SalePriceTextBox.Size = new System.Drawing.Size(47, 13);
+            this.SalePriceTextBox.TabIndex = 82;
+            this.SalePriceTextBox.Text = "No Data";
+            // 
+            // WholesalePriceTextBox
+            // 
+            this.WholesalePriceTextBox.AutoSize = true;
+            this.WholesalePriceTextBox.Location = new System.Drawing.Point(100, 36);
+            this.WholesalePriceTextBox.Name = "WholesalePriceTextBox";
+            this.WholesalePriceTextBox.Size = new System.Drawing.Size(47, 13);
+            this.WholesalePriceTextBox.TabIndex = 12;
+            this.WholesalePriceTextBox.Text = "No Data";
             // 
             // FormHeader
             // 
@@ -391,10 +393,31 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.panel1.Controls.Add(this.SalesChart);
             this.panel1.Location = new System.Drawing.Point(529, 249);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(259, 190);
             this.panel1.TabIndex = 75;
+            // 
+            // SalesChart
+            // 
+            this.SalesChart.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.SalesChart.BorderlineColor = System.Drawing.SystemColors.InactiveBorder;
+            chartArea1.Name = "ChartArea1";
+            this.SalesChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.SalesChart.Legends.Add(legend1);
+            this.SalesChart.Location = new System.Drawing.Point(3, 10);
+            this.SalesChart.Name = "SalesChart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 2;
+            this.SalesChart.Series.Add(series1);
+            this.SalesChart.Size = new System.Drawing.Size(253, 177);
+            this.SalesChart.TabIndex = 1;
+            this.SalesChart.Text = "chart1";
             // 
             // label10
             // 
@@ -408,10 +431,30 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.panel3.Controls.Add(this.ItemProfitChart);
             this.panel3.Location = new System.Drawing.Point(529, 67);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(259, 176);
             this.panel3.TabIndex = 78;
+            // 
+            // ItemProfitChart
+            // 
+            this.ItemProfitChart.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ItemProfitChart.BorderlineColor = System.Drawing.SystemColors.InactiveBorder;
+            chartArea2.Name = "ChartArea1";
+            this.ItemProfitChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.ItemProfitChart.Legends.Add(legend2);
+            this.ItemProfitChart.Location = new System.Drawing.Point(3, 10);
+            this.ItemProfitChart.Name = "ItemProfitChart";
+            this.ItemProfitChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.ItemProfitChart.Series.Add(series2);
+            this.ItemProfitChart.Size = new System.Drawing.Size(253, 163);
+            this.ItemProfitChart.TabIndex = 2;
+            this.ItemProfitChart.Text = "chart1";
             // 
             // label11
             // 
@@ -433,10 +476,21 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.panel5.Controls.Add(this.ProfitLabel);
             this.panel5.Location = new System.Drawing.Point(308, 249);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(215, 190);
             this.panel5.TabIndex = 77;
+            // 
+            // ProfitLabel
+            // 
+            this.ProfitLabel.AutoSize = true;
+            this.ProfitLabel.Font = new System.Drawing.Font("Consolas", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfitLabel.Location = new System.Drawing.Point(19, 65);
+            this.ProfitLabel.Name = "ProfitLabel";
+            this.ProfitLabel.Size = new System.Drawing.Size(174, 47);
+            this.ProfitLabel.TabIndex = 1;
+            this.ProfitLabel.Text = "No Data";
             // 
             // ViewerBackButton
             // 
@@ -455,11 +509,21 @@
             this.ViewerBackButton.UseVisualStyleBackColor = false;
             this.ViewerBackButton.Click += new System.EventHandler(this.ViewerBackButton_Click);
             // 
+            // EventItemListBox
+            // 
+            this.EventItemListBox.FormattingEnabled = true;
+            this.EventItemListBox.Location = new System.Drawing.Point(168, 60);
+            this.EventItemListBox.Name = "EventItemListBox";
+            this.EventItemListBox.Size = new System.Drawing.Size(134, 381);
+            this.EventItemListBox.TabIndex = 81;
+            this.EventItemListBox.SelectedIndexChanged += new System.EventHandler(this.EventItemListBox_SelectedIndexChanged);
+            // 
             // ItemViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.EventItemListBox);
             this.Controls.Add(this.ViewerBackButton);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label9);
@@ -468,8 +532,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.FormHeader);
             this.Controls.Add(this.ManagerViewerButton);
@@ -482,31 +544,29 @@
             this.Controls.Add(this.button8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ItemViewer";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ItemViewer";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.FormHeader.ResumeLayout(false);
             this.FormHeader.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SalesChart)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ItemProfitChart)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox ItemNameTextBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -530,5 +590,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button ViewerBackButton;
+        private System.Windows.Forms.ListBox EventItemListBox;
+        private System.Windows.Forms.Label ProfitLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ItemProfitChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart SalesChart;
+        private System.Windows.Forms.Label StoresStockingTextBox;
+        private System.Windows.Forms.Label UnitsSoldTextBox;
+        private System.Windows.Forms.Label ProffitPerUnitTextBox;
+        private System.Windows.Forms.Label SalePriceTextBox;
+        private System.Windows.Forms.Label WholesalePriceTextBox;
     }
 }

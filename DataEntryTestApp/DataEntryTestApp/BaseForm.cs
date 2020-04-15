@@ -18,6 +18,7 @@ namespace DataEntryTestApp
         int originMouseY = 0;
         //is window allowed to move?
         bool mouseDown;
+        public Point windowPosition = new Point();
 
         //called whenever the user clicks the close button on a form
         protected void ExitAction()
@@ -105,7 +106,9 @@ namespace DataEntryTestApp
         {
             if(!_temp.Visible)
             {
+                 windowPosition = this.Location;
                 this.Hide();
+                _temp.Location = windowPosition;
                 _temp.Show();
                 this.Close();
             }
@@ -113,6 +116,7 @@ namespace DataEntryTestApp
         //creates a new window when navigating child forms to the event viewer, on child is true if
         protected void ShowViewer(string type, EventViewer _temp, Event _eventData)
         {
+            windowPosition = this.Location;
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
             
             switch(type.ToLower())
@@ -131,9 +135,50 @@ namespace DataEntryTestApp
                     break;
             }
             this.Hide();
+            newForm.Location = windowPosition;
             newForm.ShowDialog();
-            if(!(this is EventViewer)) // if the current open page is not an event viewer
+            if (!(this is EventViewer)) // if the current open page is not an event viewer
             {
+                this.Close();
+            }
+        }
+
+        //======================Initializer Properties============================
+        protected void ShowInitializer(string type, EventInitializer _temp, Event _eventData)
+        {
+            System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
+            windowPosition = this.Location;
+
+            switch (type.ToLower())
+            {
+                case "store":
+                    newForm = new StoreInitialize(_temp, _eventData);
+                    break;
+                case "item":
+                    newForm = new ItemInitializer(_temp, _eventData);
+                    break;
+                case "employee":
+                    newForm = new EmployeeInitializer(_temp, _eventData);
+                    break;
+            }
+            this.Hide();
+            newForm.Location = windowPosition;
+            newForm.ShowDialog();
+            if (!(this is EventInitializer)) // if the current open page is not an event viewer
+            {
+                this.Close();
+            }
+        }
+
+        protected void UnhideEventInitializer(EventInitializer _temp)
+        {
+            if (!_temp.Visible)
+            {
+                windowPosition = this.Location;
+                this.Hide();
+                _temp.Location = windowPosition;
+                _temp.Show();
+                _temp.UpdatePageContents();
                 this.Close();
             }
         }

@@ -22,11 +22,26 @@ namespace DataEntryTestApp
             parentReference = _temp;
             storedEvent = _eventData;
             InitializeComponent();
+            GenerateTable();
+            UpdatePageData(storedEvent.stores[0]);
+        }
+
+        //opens a store viewer with target store open
+        public StoreViewer(EventViewer _temp, Event _eventData, Store _store)
+        {
+            parentReference = _temp;
+            storedEvent = _eventData;
+            InitializeComponent();
+            GenerateTable();
+            UpdatePageData(_store);
+        }
+
+        private void GenerateTable()
+        {
             foreach (Store store in storedEvent.stores)
             {
                 StoreListBox.Items.Add(store.storeName);
             }
-            UpdatePageData(storedEvent.stores[1]);
         }
 
         private void FormHeader_MouseDown(object sender, MouseEventArgs e)
@@ -104,6 +119,7 @@ namespace DataEntryTestApp
                 }
                 _targetChart.AlignDataPointsByAxisLabel();
             }
+            _targetChart.ChartAreas[0].RecalculateAxesScale();
         }
 
         private void StoreListBox_MouseClick(object sender, MouseEventArgs e)
@@ -111,6 +127,7 @@ namespace DataEntryTestApp
             if(StoreListBox.SelectedIndex != -1)
             {
                 UpdatePageData(storedEvent.stores[StoreListBox.SelectedIndex]);
+                StoreListBox.SetSelected(StoreListBox.SelectedIndex, false);
             }
         }
 
@@ -132,6 +149,59 @@ namespace DataEntryTestApp
         private void ViewerBackButton_Click(object sender, EventArgs e)
         {
             UnhideEventViewer(parentReference);
+        }
+
+        //click staff member off of list, opens staff viewer / manager viewer on using clicked staff member
+        private void StaffMemberListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (StaffMemberListBox.SelectedIndex != -1)
+            {
+                windowPosition = this.Location;
+                Staff foo = storedEvent.staffMembers.First(bar => bar.name == StaffMemberListBox.SelectedItem.ToString());
+                if (storedEvent.CheckIsManager(foo)) // staff member is manager
+                {
+                    ManagerViewer tempForm = new ManagerViewer(parentReference, storedEvent, foo);
+                    this.Hide();
+                    tempForm.Location = windowPosition;
+                    tempForm.ShowDialog();
+                    this.Close();
+                }
+                else // staff member is not manager
+                {
+                    Form newForm = new Form(parentReference, storedEvent, foo);
+                    this.Hide();
+                    newForm.Location = windowPosition;
+                    newForm.ShowDialog();
+                    this.Close();
+                }
+            }
+        }
+
+        //opens manager viewer using clicked manager as target
+        private void ManagerNameTextBox_Click(object sender, EventArgs e)
+        {
+            windowPosition = this.Location;
+            Store foo = storedEvent.stores.First(bar => bar.manager.name == ManagerNameTextBox.Text);
+            ManagerViewer newForm = new ManagerViewer(parentReference, storedEvent, foo.manager);
+            this.Hide();
+            newForm.Location = windowPosition;
+            newForm.ShowDialog();
+            this.Close();
+        }
+
+        private void InventoryListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (InventoryListBox.SelectedIndex != -1)
+            {
+                windowPosition = this.Location;
+                Item foo = storedEvent.eventItems.First(bar => bar.name == InventoryListBox.SelectedItem.ToString());
+
+                ItemViewer tempForm = new ItemViewer(parentReference, storedEvent, foo);
+                this.Hide();
+                tempForm.Location = windowPosition;
+                tempForm.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

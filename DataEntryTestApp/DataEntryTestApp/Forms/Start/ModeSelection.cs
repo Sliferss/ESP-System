@@ -13,7 +13,8 @@ namespace DataEntryTestApp
     public partial class ModeSelection : BaseForm
     {
        
-        List<Event> events = new List<Event>(){new NoNetworkEvent().tempEvent};  // loads an example into application
+        List<Event> events = new List<Event>(){new NoNetworkEvent("full").tempEvent};  // loads an example into application
+        List<Event> incompleteEvents = new List<Event>() { new NoNetworkEvent("partial").tempEvent };
         public ModeSelection()
         {
             InitializeComponent();
@@ -65,7 +66,7 @@ namespace DataEntryTestApp
             }
             else
             {
-                ErrorLabel.Text = "No Target Selected";
+                ErrorLabel.Text = "No Target Selected.";
             }
         }
 
@@ -75,11 +76,12 @@ namespace DataEntryTestApp
             if(EventNameTextBox.TextLength != 0)
             {
                 this.Hide();
-                using (var eventViewer = new EventInitializer())
+                using (var eventViewer = new EventInitializer(EventNameTextBox.Text))
                 {
                     switch (eventViewer.ShowDialog())
                     {
                         case DialogResult.OK:
+                            UploadNewEvent(eventViewer.newEvent);
                             break;
                         case DialogResult.Cancel:
                             break;
@@ -93,12 +95,54 @@ namespace DataEntryTestApp
             }
         }
 
+        //uploads new event to server
+        private void UploadNewEvent(Event _newEvent)
+        {
+            //communication goes here
+            //code bellow is for offline use
+            incompleteEvents.Add(_newEvent);
+            DisplayEventNames();
+        }
+
+        //updates event on server
+        public void UpdateEvent(Event _newEvent)
+        {
+            //communication goes here
+            //code bellow is for offline use
+            events.Add(_newEvent);
+            incompleteEvents.Remove(incompleteEvents.First(foo => foo.eventName == _newEvent.eventName));
+            DisplayEventNames();
+        }
+
         //adds all event names to list
         private void DisplayEventNames()
         {
+            EventsListBox.Items.Clear();
+            NoSaleListBox.Items.Clear();
             foreach(Event foo in events)
             {
                 EventsListBox.Items.Add(foo.eventName);
+            }
+            foreach(Event bar in incompleteEvents)
+            {
+                NoSaleListBox.Items.Add(bar.eventName);
+            }
+        }
+
+        private void SalesDataButton_Click(object sender, EventArgs e)
+        {
+            ErrorLabel.Text = "";
+            if (NoSaleListBox.SelectedIndex != -1)
+            {
+
+                this.Hide();
+                SalesUpdateConfirmation temp = new SalesUpdateConfirmation(incompleteEvents[NoSaleListBox.SelectedIndex], this);
+                temp.ShowDialog();
+            }
+
+            else
+            {
+                ErrorLabel.Text = "Error: No Event Selected.";
             }
         }
     }
