@@ -48,39 +48,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseForm.cs">
+    <Compile Include="Forms\Interfaces\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientObjects\Event.cs" />
     <Compile Include="DBConnect.cs" />
-    <Compile Include="Forms\Creation\EmployeeInitializer.cs">
+    <Compile Include="Forms\UserForms\Creation\EmployeeInitializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Creation\EmployeeInitializer.Designer.cs">
+    <Compile Include="Forms\UserForms\Creation\EmployeeInitializer.Designer.cs">
       <DependentUpon>EmployeeInitializer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Creation\EventInitializer.cs">
+    <Compile Include="Forms\UserForms\Creation\EventInitializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Creation\EventInitializer.Designer.cs">
+    <Compile Include="Forms\UserForms\Creation\EventInitializer.Designer.cs">
       <DependentUpon>EventInitializer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Creation\ItemInitializer.cs">
+    <Compile Include="Forms\UserForms\Creation\ItemInitializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Creation\ItemInitializer.Designer.cs">
+    <Compile Include="Forms\UserForms\Creation\ItemInitializer.Designer.cs">
       <DependentUpon>ItemInitializer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Viewing\EmployeeViewer.cs">
+    <Compile Include="Forms\UserForms\Viewing\EmployeeViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Viewing\EmployeeViewer.Designer.cs">
+    <Compile Include="Forms\UserForms\Viewing\EmployeeViewer.Designer.cs">
       <DependentUpon>EmployeeViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Viewing\EventViewer.cs">
+    <Compile Include="Forms\UserForms\Viewing\EventViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Viewing\EventViewer.Designer.cs">
+    <Compile Include="Forms\UserForms\Viewing\EventViewer.Designer.cs">
       <DependentUpon>EventViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TestingConnection\Form1.cs">
@@ -96,16 +96,16 @@
       <DependentUpon>GetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientObjects\Item.cs" />
-    <Compile Include="Forms\Start\LoginForm.cs">
+    <Compile Include="Forms\UserForms\Start\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Start\LoginForm.Designer.cs">
+    <Compile Include="Forms\UserForms\Start\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Start\ModeSelection.cs">
+    <Compile Include="Forms\UserForms\Start\ModeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Start\ModeSelection.Designer.cs">
+    <Compile Include="Forms\UserForms\Start\ModeSelection.Designer.cs">
       <DependentUpon>ModeSelection.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TestingConnection\PostForm.cs">
@@ -114,23 +114,29 @@
     <Compile Include="Forms\TestingConnection\PostForm.Designer.cs">
       <DependentUpon>PostForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Viewing\ItemViewer.cs">
+    <Compile Include="Forms\UserForms\Viewing\ItemViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Viewing\ItemViewer.Designer.cs">
+    <Compile Include="Forms\UserForms\Viewing\ItemViewer.Designer.cs">
       <DependentUpon>ItemViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Viewing\ManagerViewer.cs">
+    <Compile Include="Forms\UserForms\Viewing\ManagerViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Viewing\ManagerViewer.Designer.cs">
+    <Compile Include="Forms\UserForms\Viewing\ManagerViewer.Designer.cs">
       <DependentUpon>ManagerViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\ItemSales.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\ItemSales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\ItemSales.Designer.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\ItemSales.Designer.cs">
       <DependentUpon>ItemSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Interfaces\Initializer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Interfaces\Initializer.Designer.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
     </Compile>
     <Compile Include="NoNetworkEvent.cs" />
     <Compile Include="Program.cs" />
@@ -138,61 +144,67 @@
     <Compile Include="ClientObjects\Staff.cs" />
     <Compile Include="ClientObjects\Store.cs" />
     <Compile Include="ClientObjects\StoreItem.cs" />
-    <Compile Include="Forms\Viewing\StoreViewer.cs">
+    <Compile Include="Forms\UserForms\Viewing\StoreViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Viewing\StoreViewer.Designer.cs">
+    <Compile Include="Forms\UserForms\Viewing\StoreViewer.Designer.cs">
       <DependentUpon>StoreViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Creation\StoreInitialize.cs">
+    <Compile Include="Forms\UserForms\Creation\StoreInitialize.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Creation\StoreInitialize.Designer.cs">
+    <Compile Include="Forms\UserForms\Creation\StoreInitialize.Designer.cs">
       <DependentUpon>StoreInitialize.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\SalesUpdateConfirmation.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\SalesUpdateConfirmation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\SalesUpdateConfirmation.Designer.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\SalesUpdateConfirmation.Designer.cs">
       <DependentUpon>SalesUpdateConfirmation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\StoreSales.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\StoreSales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\StoreSales.Designer.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\StoreSales.Designer.cs">
       <DependentUpon>StoreSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\SalesCompleteMessage.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\SalesCompleteMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SalesUpdate\SalesCompleteMessage.Designer.cs">
+    <Compile Include="Forms\UserForms\SalesUpdate\SalesCompleteMessage.Designer.cs">
       <DependentUpon>SalesCompleteMessage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BaseForm.resx">
+    <Compile Include="Forms\Interfaces\Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Interfaces\Viewer.Designer.cs">
+      <DependentUpon>Viewer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\Interfaces\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Creation\EmployeeInitializer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Creation\EmployeeInitializer.resx">
       <DependentUpon>EmployeeInitializer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Creation\EventInitializer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Creation\EventInitializer.resx">
       <DependentUpon>EventInitializer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Creation\ItemInitializer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Creation\ItemInitializer.resx">
       <DependentUpon>ItemInitializer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SalesUpdate\ItemSales.resx">
+    <EmbeddedResource Include="Forms\UserForms\SalesUpdate\ItemSales.resx">
       <DependentUpon>ItemSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SalesUpdate\SalesCompleteMessage.resx">
+    <EmbeddedResource Include="Forms\UserForms\SalesUpdate\SalesCompleteMessage.resx">
       <DependentUpon>SalesCompleteMessage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SalesUpdate\StoreSales.resx">
+    <EmbeddedResource Include="Forms\UserForms\SalesUpdate\StoreSales.resx">
       <DependentUpon>StoreSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Viewing\EmployeeViewer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Viewing\EmployeeViewer.resx">
       <DependentUpon>EmployeeViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Viewing\EventViewer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Viewing\EventViewer.resx">
       <DependentUpon>EventViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TestingConnection\Form1.resx">
@@ -201,22 +213,22 @@
     <EmbeddedResource Include="Forms\TestingConnection\GetForm.resx">
       <DependentUpon>GetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Start\LoginForm.resx">
+    <EmbeddedResource Include="Forms\UserForms\Start\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Start\ModeSelection.resx">
+    <EmbeddedResource Include="Forms\UserForms\Start\ModeSelection.resx">
       <DependentUpon>ModeSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TestingConnection\PostForm.resx">
       <DependentUpon>PostForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Viewing\StoreViewer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Viewing\StoreViewer.resx">
       <DependentUpon>StoreViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Viewing\ItemViewer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Viewing\ItemViewer.resx">
       <DependentUpon>ItemViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Viewing\ManagerViewer.resx">
+    <EmbeddedResource Include="Forms\UserForms\Viewing\ManagerViewer.resx">
       <DependentUpon>ManagerViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -228,10 +240,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Creation\StoreInitialize.resx">
+    <EmbeddedResource Include="Forms\UserForms\Creation\StoreInitialize.resx">
       <DependentUpon>StoreInitialize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SalesUpdate\SalesUpdateConfirmation.resx">
+    <EmbeddedResource Include="Forms\UserForms\SalesUpdate\SalesUpdateConfirmation.resx">
       <DependentUpon>SalesUpdateConfirmation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

@@ -12,7 +12,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DataEntryTestApp
 {
-    public partial class StoreViewer : BaseForm
+    public partial class StoreViewer : Viewer
     {
         public EventViewer parentReference;
         public Event storedEvent;
@@ -40,7 +40,7 @@ namespace DataEntryTestApp
         {
             foreach (Store store in storedEvent.stores)
             {
-                StoreListBox.Items.Add(store.storeName);
+                ListBoxInsert(StoreListBox, store.storeName);
             }
         }
 
@@ -72,8 +72,8 @@ namespace DataEntryTestApp
         //updates all data on page to specified store
         public void UpdatePageData(Store _store)
         {
-            StaffMemberListBox.Items.Clear();
-            InventoryListBox.Items.Clear();
+            ListBoxClear(StaffMemberListBox);
+            ListBoxClear(InventoryListBox);
 
             StoreNameTextBox.Text = _store.storeName;
             ManagerNameTextBox.Text = _store.manager.name;
@@ -84,11 +84,11 @@ namespace DataEntryTestApp
             StaffMemberListBox.Items.Add(_store.manager.name);
             foreach(Staff _tempStaff in _store.staffOnDuty)
             {
-                StaffMemberListBox.Items.Add(_tempStaff.name);
+                ListBoxInsert(StaffMemberListBox, _tempStaff.name);
             }
             foreach(StoreItem _tempStoreItem in _store.inventory)
             {
-                InventoryListBox.Items.Add(_tempStoreItem.item.name);
+                ListBoxInsert(InventoryListBox, _tempStoreItem.item.name);
             }
             StoreProfitLabel.Text = FormatNumber(_store.GetProfit());
             FillBarChart(ItemProfitChart, _store);
@@ -157,7 +157,7 @@ namespace DataEntryTestApp
             if (StaffMemberListBox.SelectedIndex != -1)
             {
                 windowPosition = this.Location;
-                Staff foo = storedEvent.staffMembers.First(bar => bar.name == StaffMemberListBox.SelectedItem.ToString());
+                Staff foo = storedEvent.GetStaffByName(GetListBoxSelected(StaffMemberListBox));
                 if (storedEvent.CheckIsManager(foo)) // staff member is manager
                 {
                     ManagerViewer tempForm = new ManagerViewer(parentReference, storedEvent, foo);
@@ -181,7 +181,7 @@ namespace DataEntryTestApp
         private void ManagerNameTextBox_Click(object sender, EventArgs e)
         {
             windowPosition = this.Location;
-            Store foo = storedEvent.stores.First(bar => bar.manager.name == ManagerNameTextBox.Text);
+            Store foo = storedEvent.GetStoreByManagerName(ManagerNameTextBox.Text);
             ManagerViewer newForm = new ManagerViewer(parentReference, storedEvent, foo.manager);
             this.Hide();
             newForm.Location = windowPosition;
@@ -191,11 +191,10 @@ namespace DataEntryTestApp
 
         private void InventoryListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (InventoryListBox.SelectedIndex != -1)
+            if (CheckItemSelected(InventoryListBox))
             {
                 windowPosition = this.Location;
-                Item foo = storedEvent.eventItems.First(bar => bar.name == InventoryListBox.SelectedItem.ToString());
-
+                Item foo = storedEvent.GetItemByName(GetListBoxSelected(InventoryListBox));
                 ItemViewer tempForm = new ItemViewer(parentReference, storedEvent, foo);
                 this.Hide();
                 tempForm.Location = windowPosition;

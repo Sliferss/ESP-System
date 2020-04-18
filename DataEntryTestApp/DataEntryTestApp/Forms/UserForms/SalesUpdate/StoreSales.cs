@@ -29,28 +29,27 @@ namespace DataEntryTestApp
         {
             foreach(Store foo in eventRef.stores)
             {
-                StoreListBox.Items.Add(foo.storeName);
+                ListBoxInsert(StoreListBox, foo.storeName);
             }
         }
 
         //checks if user has selected a store and opens relevant inventory, on complete, removes store from list
         private void StoreSelect_Click(object sender, EventArgs e)
         {
-            ErrorLabel.Text = "";
-            if(StoreListBox.SelectedIndex != -1)
+            ClearErrorLabel(ErrorLabel);
+            if(CheckItemSelected(StoreListBox))
             {
-                Store foo = eventRef.stores.First(bar => bar.storeName == StoreListBox.SelectedItem.ToString());
+                Store foo = eventRef.GetStore(StoreListBox.SelectedItem.ToString());
                 using (var itemData = new ItemSales(foo.inventory, foo.storeName))
                 {
                     this.Hide();
                     switch (itemData.ShowDialog())
                     {
                         case DialogResult.OK:
-                            eventRef.stores.First(bar => bar.storeName == StoreListBox.SelectedItem.ToString()).inventory = itemData.inventoryRef;
-                            StoreListBox.Items.Remove(StoreListBox.SelectedItem);
+                            eventRef.SetStoreInventory(foo.storeName, itemData.inventoryRef);
+                            ListBoxRemove(StoreListBox, StoreListBox.SelectedItem.ToString());
                             break;
                     }
-                    StoreListBox.Items.Remove(StoreListBox.SelectedIndex);
                     this.Show();
                 }
             }
@@ -72,7 +71,7 @@ namespace DataEntryTestApp
             }
             else
             {
-                ErrorLabel.Text = "Error: Stores Remaining To Update";
+                SetError(ErrorLabel, "Not All Stores Complete");
             }
         }
     }

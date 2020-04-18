@@ -11,7 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DataEntryTestApp
 {
-    public partial class ItemViewer : BaseForm
+    public partial class ItemViewer : Viewer
     {
         public EventViewer parentReference;
         public Event storedEvent;
@@ -43,7 +43,7 @@ namespace DataEntryTestApp
         {
             foreach (Item item in storedEvent.eventItems)
             {
-                EventItemListBox.Items.Add(item.name);
+                ListBoxInsert(EventItemListBox, item.name);
             }
         }
         //updates all fields based on a selected item

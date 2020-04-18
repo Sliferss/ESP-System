@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DataEntryTestApp
 {
-    public partial class ManagerViewer : BaseForm
+    public partial class ManagerViewer : Viewer
     {
         public EventViewer parentReference;
         public Event storedEvent;
@@ -61,7 +61,7 @@ namespace DataEntryTestApp
         {
             foreach (Store foo in storedEvent.stores)
             {
-                ManagerListBox.Items.Add(foo.manager.name);
+                ListBoxInsert(ManagerListBox, foo.manager.name);
                 managers.Add(foo.manager);
             }
         }
@@ -76,7 +76,7 @@ namespace DataEntryTestApp
                 {
                     foreach (Staff bar in foo.staffOnDuty)
                     {
-                        EmployeeListBox.Items.Add(bar.name);
+                        ListBoxInsert(EmployeeListBox, bar.name);
                     }
                     break;
                 }
@@ -132,7 +132,7 @@ namespace DataEntryTestApp
         //opens data on clicked manager
         private void ManagerListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ManagerListBox.SelectedIndex != -1)
+            if (CheckItemSelected(ManagerListBox))
             {
                 UpdatePageData(managers[ManagerListBox.SelectedIndex]);
                 ManagerListBox.SetSelected(ManagerListBox.SelectedIndex, false);
@@ -154,7 +154,7 @@ namespace DataEntryTestApp
         private void EmployeeListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             windowPosition = this.Location;
-            Staff foo = storedEvent.staffMembers.First(bar => bar.name == EmployeeListBox.SelectedItem.ToString());
+            Staff foo = storedEvent.GetStaffByName(GetListBoxSelected(EmployeeListBox));
             Form newForm = new Form(parentReference, storedEvent, foo);
             this.Hide();
             newForm.Location = windowPosition;

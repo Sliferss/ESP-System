@@ -11,7 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DataEntryTestApp
 {
-    public partial class EventViewer : BaseForm
+    public partial class EventViewer : Viewer
     {
         Event storedEvent;
    
@@ -51,11 +51,12 @@ namespace DataEntryTestApp
         public void UpdatePageData()
         {
             EventNameBox.Text = storedEvent.eventName;
-            EmployeeCountTextBox.Text = storedEvent.staffMembers.Count.ToString();
+            EmployeeCountTextBox.Text = storedEvent.GetEmployeeCount().ToString();
             SoldItemTextBox.Text = SoldItemCount().ToString();
-            StoreCountTextBox.Text = storedEvent.stores.Count.ToString();
+            StoreCountTextBox.Text = storedEvent.GetStoreCount().ToString();
             ProductCostTextBox.Text = FormatNumber(InitialInvestmentCalc());
-            UniqueItemCountTextBox.Text = storedEvent.eventItems.Count.ToString();
+
+            UniqueItemCountTextBox.Text = storedEvent.GetItemCount().ToString();
             ProffitLabel.Text = FormatNumber(storedEvent.GetEventProfit());
             FillStoreBarChart(SumStoreProfChart);
             FillProffitPieChart(InvestmentCompareChart);

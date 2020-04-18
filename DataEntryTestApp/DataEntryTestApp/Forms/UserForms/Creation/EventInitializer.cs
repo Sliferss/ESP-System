@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DataEntryTestApp
 {
-    public partial class EventInitializer : BaseForm
+    public partial class EventInitializer : Initializer
     {
         public Event newEvent;
 
@@ -25,8 +25,8 @@ namespace DataEntryTestApp
         public void UpdatePageContents()
         {
             ClearListBoxContents();
-            StaffMemberLabel.Text = newEvent.staffMembers.Count().ToString();
-            StoresLabel.Text = newEvent.stores.Count().ToString();
+            StaffMemberLabel.Text = newEvent.GetEmployeeCount().ToString();
+            StoresLabel.Text = newEvent.GetStoreCount().ToString();
             FillListBoxContents();
         }
         
@@ -44,20 +44,20 @@ namespace DataEntryTestApp
         {
             foreach(Store foo in newEvent.stores)
             {
-                ManagerListBox.Items.Add(foo.manager.name);
-                StoreListBox.Items.Add(foo.storeName);
+                ListBoxInsert(ManagerListBox, newEvent.GetManagerName(foo));
+                ListBoxInsert(StoreListBox,foo.storeName);
             }
             foreach(Item bar in newEvent.eventItems)
             {
-                ItemListBox.Items.Add(bar.name);
+                ListBoxInsert(ItemListBox, bar.name);
             }
             foreach(Staff baz in newEvent.staffMembers)
             {
-                EmployeeListBox.Items.Add(baz.name);
+                ListBoxInsert(EmployeeListBox, baz.name);
             }
         }
 
-        //gives 
+        //called by child forms, updates the event stored to reflect changes
         public void UpdateEvent(Event _event)
         {
             newEvent = _event;
@@ -110,13 +110,13 @@ namespace DataEntryTestApp
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if(newEvent.stores.Count != 0)
+            if(newEvent.StoresExist())
             {
                 this.DialogResult = DialogResult.OK;
             }
             else
             {
-                ELabel.Text = "Error: No Stores Assigned";
+                SetError(ELabel, "No Stores Assigned");
             }
         }
     }

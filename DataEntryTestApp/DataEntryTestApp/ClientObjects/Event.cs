@@ -30,6 +30,7 @@ namespace DataEntryTestApp
             eventItems = new List<Item>();
         }
 
+        //returns the total proffit of the event
         public float GetEventProfit()
         {
             float profit = 0;
@@ -62,6 +63,103 @@ namespace DataEntryTestApp
                 }
             }
             return false;
+        }
+
+        //returns a store with the specified name
+        public Store GetStore(string _storeName)
+        {
+            return stores.First(foo => foo.storeName == _storeName);
+        }
+
+        //returns the index of the store with the chosen name
+        private int GetStoreIndex(string _storeName)
+        {
+            return stores.FindIndex(foo => foo.storeName == _storeName);
+        }
+
+        //picks a store by name, and sets its inventory = to passed List<store>
+        public void SetStoreInventory(string _storeName, List<StoreItem> _inventory)
+        {
+            stores.First(foo => foo.storeName == _storeName).SetInventory(_inventory);
+        }
+
+        //checks if any stores have been created, returns false if empty
+        public bool StoresExist()
+        {
+            if (stores.Count != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //returns the number of stores at the event
+        public int GetStoreCount()
+        {
+            return stores.Count();
+        }
+
+        public int GetItemCount()
+        {
+            return eventItems.Count();
+        }
+
+        //returns the number of staff on the event
+        public int GetEmployeeCount()
+        {
+            return staffMembers.Count();
+        }
+
+        //returns the name of the manager
+        public string GetManagerName(Store _store)
+        {
+            return _store.manager.name;
+        }
+
+        //returns satff member with name = to the passed in string
+        public Staff GetStaffByName(string _foo)
+        {
+            return staffMembers.First(bar => bar.name == _foo);
+        }
+
+        //returns item with name = to the passed in string
+        public Item GetItemByName(string _foo)
+        {
+            return eventItems.First(bar => bar.name == _foo);
+        }
+
+        //returns store with name = passed in string
+        public Store GetStoreByName(string _foo)
+        {
+            return stores.First(bar => bar.storeName == _foo);
+        }
+
+        //returns store with specified manager
+        public Store GetStoreByManagerName(string _foo)
+        {
+            return stores.First(bar => bar.manager.name == _foo);
+        }
+
+        //sets specified staff member = used
+        public void SetStaffMemberUsed(Staff _foo)
+        {
+            staffMembers.First(bar => bar == _foo).used = true;
+        }
+
+        //returns the name of the store target staff is working on
+        public string GetStoreNameByStaffMember(Staff _foo)
+        {
+            foreach(Store bar in stores)
+            {
+                if(bar.staffOnDuty.Contains(_foo))
+                {
+                    return bar.storeName;
+                }
+            }
+            return "No Data";
         }
     }
 }

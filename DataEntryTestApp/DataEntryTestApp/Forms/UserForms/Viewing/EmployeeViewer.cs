@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DataEntryTestApp
 {
-    public partial class Form : BaseForm
+    public partial class Form : Viewer
     {
         public EventViewer parentReference;
         public Event storedEvent;
@@ -41,20 +41,7 @@ namespace DataEntryTestApp
         {
             StaffNameLabel.Text = _staff.name;
             SalaryLabel.Text = FormatNumber(_staff.pay);
-            StoreLabel.Text = GetStoreName(_staff);
-        }
-
-        //gets the store name of the store target staff is working on
-        private string GetStoreName(Staff _staff)
-        {
-            foreach(Store foo in storedEvent.stores)
-            {
-                if(foo.staffOnDuty.Contains(_staff))
-                {
-                    return foo.storeName;
-                }
-            }
-            return "no data";
+            StoreLabel.Text = storedEvent.GetStoreNameByStaffMember(_staff);
         }
 
         //generates a list of all staff members
@@ -64,9 +51,8 @@ namespace DataEntryTestApp
             {
                 foreach(Staff bar in foo.staffOnDuty)
                 {
-                    StaffListBox.Items.Add(bar.name);
+                    ListBoxInsert(StaffListBox, bar.name);
                     storedStaff.Add(bar);
-
                 }
             }
         }
@@ -74,7 +60,7 @@ namespace DataEntryTestApp
         //invokes UpdatePageData using the clicked staff member off the list as the passed parameter 
         private void StaffListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (StaffListBox.SelectedIndex != -1)
+            if (CheckItemSelected(StaffListBox))
             {
                 UpdatePageData(storedStaff[StaffListBox.SelectedIndex]);
                 StaffListBox.SetSelected(StaffListBox.SelectedIndex, false);
@@ -85,13 +71,14 @@ namespace DataEntryTestApp
         private void StoreLabel_MouseClick(object sender, MouseEventArgs e)
         {
             windowPosition = this.Location;
-            Store foo = storedEvent.stores.First(bar => bar.storeName == StoreLabel.Text);
+            Store foo = storedEvent.GetStoreByName(StoreLabel.Text);
             StoreViewer newForm = new StoreViewer(parentReference, storedEvent, foo);
             this.Hide();
             newForm.Location = windowPosition;
             newForm.ShowDialog();
             this.Close();
         }
+
         private void FormHeader_MouseDown(object sender, MouseEventArgs e)
         {
             HeaderMouseDownAction();

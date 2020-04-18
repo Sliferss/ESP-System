@@ -28,6 +28,11 @@ namespace DataEntryTestApp
             sold = _sold;
         }
 
+        public void SetSaleCount(int _sold)
+        {
+            sold = _sold;
+        }
+
         //returns the number of the item remaining after sales
         public float ItemsRemaining()
         {

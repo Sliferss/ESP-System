@@ -38,6 +38,18 @@ namespace DataEntryTestApp
             staffOnDuty = new List<Staff>();
         }
 
+        //sets inventory
+        public void SetInventory(List<StoreItem> _inventory)
+        {
+            inventory = _inventory;
+        }
+
+        //adds StoreItem To Store Inventory
+        public void AddItemToInventory(StoreItem _foo)
+        {
+            inventory.Add(_foo);
+        }
+
         //creates store item from item object, adds it to store inventory
         public void AssignInventoryItem(Item _item, int _stock)
         {

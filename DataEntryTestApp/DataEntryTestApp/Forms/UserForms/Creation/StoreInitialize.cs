@@ -10,13 +10,15 @@ using System.Windows.Forms;
 
 namespace DataEntryTestApp
 {
-    public partial class StoreInitialize : BaseForm
+    public partial class StoreInitialize : Initializer
     {
         EventInitializer parentRef;
         Event eventRef;
         Store newStore;
         String previousManager = "";
         bool submitPushed = false;
+
+        //copy constructor
         public StoreInitialize(EventInitializer _parentRef, Event _event)
         {
             parentRef = _parentRef;
@@ -31,21 +33,22 @@ namespace DataEntryTestApp
         {
             newStore = new Store();
             StoreNameTextBox.Clear();
-            ManagerComboBox.SelectedIndex = -1;
-            StaffComboBox.SelectedIndex = -1;
-            ItemComboBox.SelectedIndex = -1;
+            DeselectComboBox(ManagerComboBox);
+            DeselectComboBox(StaffComboBox);
+            DeselectComboBox(ItemComboBox);
             StockTextBox.Clear();
-            StaffListBox.Items.Clear();
-            ItemsListBox.Items.Clear();
+            ListBoxClear(StaffListBox);
+            ListBoxClear(ItemsListBox);
             previousManager = "";
         }
 
+        //resets items in combo box to be up to date
         public void ResetItemComboBox()
         {
             ItemComboBox.Items.Clear();
             foreach (Item foo in eventRef.eventItems)
             {
-                ItemComboBox.Items.Add(foo.name);
+                ComboBoxInsert(ItemComboBox, foo.name);
             }
         }
 
@@ -57,13 +60,13 @@ namespace DataEntryTestApp
             {
                 if(!foo.used)
                 {
-                    ManagerComboBox.Items.Add(foo.name);
-                    StaffComboBox.Items.Add(foo.name);
+                    ComboBoxInsert(ManagerComboBox, foo.name);
+                    ComboBoxInsert(StaffComboBox, foo.name);
                 }
             }
             foreach(Store bar in eventRef.stores)
             {
-                StoreListBox.Items.Add(bar.storeName);
+                ListBoxInsert(StoreListBox, bar.storeName);
             }
             ResetItemComboBox();
         }
@@ -112,17 +115,19 @@ namespace DataEntryTestApp
         private void StaffAddButton_Click(object sender, EventArgs e)
         {
             ErrorLabel.Text = "";
-            if (StaffComboBox.SelectedIndex != -1)
+            if (CheckCBSelected(StaffComboBox))
             {
-                string staffName = StaffComboBox.SelectedItem.ToString();
-                newStore.staffOnDuty.Add(eventRef.staffMembers.First(foo => foo.name == staffName));
-                StaffListBox.Items.Add(staffName);
+                string staffName = GetCBSelected(StaffComboBox);
+
+
+                newStore.staffOnDuty.Add(eventRef.GetStaffByName(staffName));
+                ListBoxInsert(StaffListBox, staffName);
                 AddStaffUpdateForm();
-                StaffComboBox.SelectedIndex = -1;
+                DeselectComboBox(StaffComboBox);
             }
             else
             {
-                ErrorLabel.Text = "Error: No Staff Selected";
+                SetError(ErrorLabel, "No Staff Selected");
             }
         }
 
@@ -132,34 +137,43 @@ namespace DataEntryTestApp
             ErrorLabel.Text = "";
             try
             {
-                if(ItemComboBox.SelectedIndex != -1)
+                if(CheckCBSelected(ItemComboBox))
                 {
-                    string itemName = ItemComboBox.SelectedItem.ToString();
-                    Item foo = eventRef.eventItems.First(bar => bar.name == itemName);
-                    int faz = int.Parse(StockTextBox.Text);
-                    StoreItem newItem = new StoreItem(foo, faz);
-                    newStore.inventory.Add(newItem);
-                    ItemsListBox.Items.Add(itemName);
-                    ItemComboBox.Items.Remove(itemName);
-                    ItemComboBox.SelectedIndex = -1;
-                    StockTextBox.Text = "";
+                    if(int.Parse(StockTextBox.Text) > 0)
+                    {
+                        string itemName = GetCBSelected(ItemComboBox);
+                        Item foo = eventRef.GetItemByName(itemName);
+                        int bar = int.Parse(StockTextBox.Text);
+                        StoreItem newItem = new StoreItem(foo, bar);
+                        newStore.AddItemToInventory(newItem);
+                        ListBoxInsert(ItemsListBox, itemName);
+                        ComboBoxRemove(ItemComboBox, itemName);
+                        DeselectComboBox(ItemComboBox);
+                        StockTextBox.Text = "";
+                    }
+                    else
+                    {
+                        SetError(ErrorLabel, "Item Stock Cannot Be Less Than One");
+                    }
                 }
                 else
                 {
-                    ErrorLabel.Text = "Error: No item Selected";
+                    SetError(ErrorLabel, "No Item Selected");
                 }
             }
             catch(Exception errorMessage)
             {
-                ErrorLabel.Text = "Error: " + errorMessage.Message;           
+                SetError(ErrorLabel, errorMessage.Message);   
             }
         }
 
+        //checks all fields are complete for submission to server
+        
         private void SubmitStorebutton_Click(object sender, EventArgs e)
         {
-            if(ManagerComboBox.SelectedIndex != -1)
+            if(CheckCBSelected(ManagerComboBox))
             {
-                newStore.manager = eventRef.staffMembers.First(foo => foo.name == ManagerComboBox.SelectedItem.ToString());
+                newStore.manager = eventRef.GetStaffByName(GetCBSelected(ManagerComboBox));
                 if(newStore.staffOnDuty.Count != 0)
                 {
                     if(newStore.inventory.Count != 0)
@@ -171,15 +185,13 @@ namespace DataEntryTestApp
                             eventRef.stores.Add(newStore);
                             UpdateStaffUsed();
                             parentRef.UpdateEvent(eventRef);
-                            StoreListBox.Items.Add(newStore.storeName);
+                            ListBoxInsert(StoreListBox, newStore.storeName);
                             StoreNameTextBox.Text = "";
-                            ManagerComboBox.SelectedIndex = -1;
-                            StaffComboBox.SelectedIndex = -1;
-                            ItemComboBox.SelectedIndex = -1;
+                            DeselectComboBoxes(new List<ComboBox>() { ManagerComboBox, StaffComboBox, ItemComboBox });
                             StockTextBox.Text = "";
-                            StaffListBox.Items.Clear();
-                            ItemsListBox.Items.Clear();
-                            ManagerComboBox.Items.Remove(newStore.manager.name);
+                            ListBoxClear(StaffListBox);
+                            ListBoxClear(ItemsListBox);
+                            ComboBoxRemove(ManagerComboBox, newStore.manager.name);
                             newStore = new Store();
                             previousManager = "";
                             submitPushed = false;
@@ -187,22 +199,22 @@ namespace DataEntryTestApp
                         }
                         else
                         {
-                            ErrorLabel.Text = "Error: No Store Name Assigned";
+                            SetError(ErrorLabel, "No Store Name Assigned");
                         }
                     }
                     else
                     {
-                        ErrorLabel.Text = "Error: No Items Assigned";
+                        SetError(ErrorLabel, "No Items Assigned");
                     }
                 }
                 else
                 {
-                    ErrorLabel.Text = "Error: No Staff Assigned";
+                    SetError(ErrorLabel, "No Staff Assigned");
                 }
             }
             else
             {
-                ErrorLabel.Text = "Error: No Manager Assigned";
+                SetError(ErrorLabel, "No Manager Assigned");
             }
         }
 
@@ -213,14 +225,14 @@ namespace DataEntryTestApp
             {
                 if (previousManager == "") // if there is no previous manager
                 {
-                    previousManager = ManagerComboBox.SelectedItem.ToString();
-                    StaffComboBox.Items.Remove(ManagerComboBox.SelectedItem.ToString());
+                    previousManager = GetCBSelected(ManagerComboBox);
+                    ComboBoxRemove(StaffComboBox, previousManager);
                 }
                 else // had previous manager
                 {
-                    StaffComboBox.Items.Add(previousManager);
-                    previousManager = ManagerComboBox.SelectedItem.ToString();
-                    StaffComboBox.Items.Remove(ManagerComboBox.SelectedItem.ToString());
+                    ComboBoxInsert(StaffComboBox, previousManager);
+                    previousManager = GetCBSelected(ManagerComboBox);
+                    ComboBoxRemove(StaffComboBox, previousManager);
                 }
             }
         }
@@ -229,8 +241,8 @@ namespace DataEntryTestApp
         //to the same store as a staff member or as a manager
         private void AddStaffUpdateForm()
         {
-            ManagerComboBox.Items.Remove(StaffComboBox.SelectedItem.ToString());
-            StaffComboBox.Items.Remove(StaffComboBox.SelectedItem.ToString());
+            ComboBoxRemove(ManagerComboBox, GetCBSelected(StaffComboBox));
+            ComboBoxRemove(StaffComboBox, GetCBSelected(StaffComboBox));
         }
 
         //sets all used staff to true (managers and staff members), called on submit
@@ -238,9 +250,9 @@ namespace DataEntryTestApp
         {
             foreach(Staff foo in newStore.staffOnDuty)
             {
-                eventRef.staffMembers.First(bar => foo == bar).used = true;
+                eventRef.SetStaffMemberUsed(foo);
             }
-            eventRef.staffMembers.First(baz => baz == newStore.manager).used = true;
+            eventRef.SetStaffMemberUsed(newStore.manager);
         }
     }
 }
