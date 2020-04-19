@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace DataEntryTestApp
 {
@@ -14,10 +16,12 @@ namespace DataEntryTestApp
     {
        
         List<Event> events = new List<Event>(){new NoNetworkEvent("full").tempEvent};  // loads an example into application
+        List<Event> eventsTest = new List<Event>();
         List<Event> incompleteEvents = new List<Event>() { new NoNetworkEvent("partial").tempEvent };
         public ModeSelection()
         {
             InitializeComponent();
+            LoadEvent();
             DisplayEventNames();
         }
 
@@ -127,6 +131,10 @@ namespace DataEntryTestApp
             {
                 NoSaleListBox.Items.Add(bar.eventName);
             }
+            foreach(Event name in eventsTest)
+            {
+                NoSaleListBox.Items.Add(name.eventName);
+            }
         }
 
         private void SalesDataButton_Click(object sender, EventArgs e)
@@ -143,6 +151,45 @@ namespace DataEntryTestApp
             else
             {
                 ErrorLabel.Text = "Error: No Event Selected.";
+            }
+        }
+
+        private void EventNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
+        //create/write file for events
+        void SaveEvent()
+        {
+            try
+            {
+                using (Stream stream = File.Open("Event.dat", FileMode.Create))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(stream, eventsTest);
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+            }
+
+        }
+
+        void LoadEvent()
+        {
+            try
+            {
+                using (Stream stream = File.Open("Event.dat", FileMode.Open))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    eventsTest = (List<Event>)bf.Deserialize(stream);
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
             }
         }
     }

@@ -7,17 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace DataEntryTestApp
 {
     public partial class EventInitializer : Initializer
     {
         public Event newEvent;
+        List<Event> eventsTest = new List<Event>();
 
         public EventInitializer(string _eventName)
         {
             newEvent = new Event(_eventName);
             InitializeComponent();
+            LoadEvent();
             EventNameTextBox.Text = _eventName;
         }
 
@@ -112,11 +116,46 @@ namespace DataEntryTestApp
         {
             if(newEvent.StoresExist())
             {
+                eventsTest.Add(newEvent);
+                SaveEvent();
                 this.DialogResult = DialogResult.OK;
             }
             else
             {
                 SetError(ELabel, "No Stores Assigned");
+            }
+        }
+
+        void SaveEvent()
+        {
+            try
+            {
+                using (Stream stream = File.Open("Event.dat", FileMode.Create))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(stream, eventsTest);
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+            }
+
+        }
+
+        void LoadEvent()
+        {
+            try
+            {
+                using (Stream stream = File.Open("Event.dat", FileMode.Open))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    eventsTest = (List<Event>)bf.Deserialize(stream);
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
             }
         }
     }

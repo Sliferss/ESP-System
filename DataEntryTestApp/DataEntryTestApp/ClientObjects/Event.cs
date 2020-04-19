@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace DataEntryTestApp
 {
-    public class Event
+    [Serializable()]
+    public class Event : ISerializable
     {
         public string eventName;
         public List<Store> stores;
@@ -160,6 +163,22 @@ namespace DataEntryTestApp
                 }
             }
             return "No Data";
+        }
+
+       public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("eventName", eventName);
+            info.AddValue("stores", stores);
+            info.AddValue("staffMembers", staffMembers);
+            info.AddValue("eventItems", eventItems);
+        }
+
+        public Event(SerializationInfo info, StreamingContext context)
+        {
+            eventName = (string)info.GetValue("eventName", typeof(string));
+            stores = (List<Store>)info.GetValue("stores", typeof(List<Store>));
+            staffMembers = (List<Staff>)info.GetValue("staffMembers", typeof(List<Staff>));
+            eventItems = (List<Item>)info.GetValue("eventItems", typeof(List<Item>));
         }
     }
 }
